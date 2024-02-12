@@ -97,7 +97,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private fun obtenerImagenId(marker: Marker): Int {
         return when (marker.title) {
-            "El SENA" -> R.drawable.imagen_sena
+            "Estoy en el sena" -> R.drawable.imagen_sena
             "Estoy en el Morro" -> R.drawable.imagen_morro
             "Estoy en el Parque Caldas" -> R.drawable.imagen_parque_caldas
             else -> R.drawable.imagen_por_defecto

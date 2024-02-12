@@ -31,11 +31,13 @@ class MainActivity : AppCompatActivity() {
 
 package com.example.coneccionbd
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.example.coneccionbd.Modem.ManangerDb
+import com.example.coneccionbd.Modem.listarDatos
 import com.example.coneccionbd.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -53,12 +55,13 @@ class MainActivity : AppCompatActivity() {
             val titulo = "Título del marcador" // Reemplaza esto con el título real del marcador
             val latitud = 0.0 // Reemplaza esto con la latitud real del marcador
             val longitud = 0.0 // Reemplaza esto con la longitud real del marcador
-
+            val intent=Intent(this,listarDatos::class.java)
             // Suponiendo que ManangerDb tiene una función insertData definida como se mostró arriba
             val manager = ManangerDb(this)
-            manager.inserData(titulo, latitud, longitud)
+            //manager.inserData(titulo, latitud, longitud)
 
             Toast.makeText(this, "Datos guardados con éxito", Toast.LENGTH_SHORT).show()
+            startActivity(intent)
         }
     }
 }

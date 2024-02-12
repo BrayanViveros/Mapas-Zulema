@@ -96,16 +96,53 @@ data class ManangerDb(val context: Context) {
         bd = bdHelper.writableDatabase
     }
 
-    fun inserData(titulo: String, latitud: Double, longitud: Double) {
-        openBdWr() // abrir bd en modo escritura
+    fun inserData(titulo: String, latitud: Double, longitud: Double): Long {
+
+      openBdWr() // abrir bd en modo escritura
 
         //creo contenedor de valores para insertar data
-        val contenedor = ContentValues()
-        contenedor.put("titulo", titulo)
-        contenedor.put("latitud", latitud)
-        contenedor.put("longitud", longitud)
+    val contenedor = ContentValues()
+    contenedor.put("titulo", titulo)
+    contenedor.put("latitud", latitud)
+    contenedor.put("longitud", longitud)
+
+    contenedor.put("cod",1)
+    contenedor.put("nombre", "cali")
+    contenedor.put("coddep", 25)
+
 
         //llamo metodo insert
-        val resul = bd.insert("datos", null, contenedor)
+
+     val  resul = bd.insert ("ciudad", null, contenedor)
+
+      return resul
+
+    }
+
+    fun  getData (): ArrayList <Ciudad> {
+
+        openBdWr()
+
+        val ciudadList = ArrayList <Ciudad>()
+
+        val cursor = bd.rawQuery(Constantes.consulta,null)
+
+        if (cursor.moveToFirst() ){
+            //se verifica si hay datos en la primera posicion del cursor
+            do {
+                val idCiudad = cursor.getColumnIndex("cod") //se almacena en las variables lo que tiene el cursor en la columna 0
+                val  nombreCiudad = cursor.getColumnIndex("nombre")
+                val coddepCiudad = cursor.getColumnIndex("coddep")
+
+                val ciudad = Ciudad(idCiudad,nombreCiudad.toString(),coddepCiudad)//paso los valores optenidos del cursor a mi objeto ciudad
+
+                ciudadList.add(ciudad)  //agrego mi objeto ciudad al arraylist
+
+            } while (cursor.moveToNext()) // el ciclo se hace hasta que el cursor se mueva hasta la siguiente posicion
+
+
+
+            }
+        return  ciudadList
     }
 }
