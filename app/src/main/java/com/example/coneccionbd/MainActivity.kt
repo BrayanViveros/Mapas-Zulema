@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             val intent=Intent(this,listarDatos::class.java)
             // Suponiendo que ManangerDb tiene una función insertData definida como se mostró arriba
             val manager = ManangerDb(this)
+            manager.inserData()
             //manager.inserData(titulo, latitud, longitud)
 
             Toast.makeText(this, "Datos guardados con éxito", Toast.LENGTH_SHORT).show()

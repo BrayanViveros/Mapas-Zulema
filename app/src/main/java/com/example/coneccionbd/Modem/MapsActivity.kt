@@ -76,7 +76,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // Guardar los datos en la base de datos
             val manager = ManangerDb(this)
             if (titulo != null) {
-                manager.inserData(titulo, latitud, longitud)
+             //   manager.inserData(titulo, latitud, longitud)
             }
 
             // Mostrar un Toast para indicar que los datos se han guardado

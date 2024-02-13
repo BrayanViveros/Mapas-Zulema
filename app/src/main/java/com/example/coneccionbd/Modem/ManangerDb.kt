@@ -96,15 +96,15 @@ data class ManangerDb(val context: Context) {
         bd = bdHelper.writableDatabase
     }
 
-    fun inserData(titulo: String, latitud: Double, longitud: Double): Long {
+    fun inserData(): Long {
 
       openBdWr() // abrir bd en modo escritura
 
         //creo contenedor de valores para insertar data
     val contenedor = ContentValues()
-    contenedor.put("titulo", titulo)
-    contenedor.put("latitud", latitud)
-    contenedor.put("longitud", longitud)
+   // contenedor.put("titulo", titulo)
+    //contenedor.put("latitud", latitud)
+    //contenedor.put("longitud", longitud)
 
     contenedor.put("cod",1)
     contenedor.put("nombre", "cali")
